@@ -1,1 +1,1 @@
-export * from "./accessoryCommand"
+export * from './accessoryCommand'

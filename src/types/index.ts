@@ -1,1 +1,1 @@
-export type Active = 0 | 1;
+export type Active = 0 | 1
