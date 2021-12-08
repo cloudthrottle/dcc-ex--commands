@@ -1,6 +1,6 @@
 import {accessoryCommand, AccessoryCommandParams} from "../../../src";
 
-describe('accessoryCommand', function () {
+describe('accessoryCommand()', function () {
     test('with Linear address options', function () {
         const linearAddressOptions: AccessoryCommandParams = {
             address: 1234,

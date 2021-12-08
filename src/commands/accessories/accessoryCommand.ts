@@ -1,7 +1,7 @@
 import {parseAddress, ParseAddressParams} from "../utils/parseAddress";
 import {makeCommand} from "../utils";
+import {Active} from "../../types";
 
-export type Active = 0 | 1;
 export type AccessoryCommandParams = { address: ParseAddressParams; active: Active };
 
 const accessorySendKey = "a"
