@@ -1,4 +1,4 @@
-import {makeCommand} from "../../src";
+import {makeCommand} from "../../../src";
 
 describe('makeCommand()', function () {
     it('returns the argument wrapped in < >', function () {

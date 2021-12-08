@@ -1,5 +1,1 @@
-import { makeCommand } from "./commands/utils";
-
-export {
-    makeCommand
-}
+export * from "./commands/utils"
