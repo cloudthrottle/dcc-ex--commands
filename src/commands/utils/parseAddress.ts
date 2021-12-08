@@ -1,13 +1,13 @@
-interface DualCoilAddress {
+export interface DualCoilAddress {
     primaryAddress: number | null
     subAddress: number | null
 }
 
-interface LinearAddress {
+export interface LinearAddress {
     linearAddress: number | null
 }
 
-interface Address extends LinearAddress, DualCoilAddress {
+export interface Address extends LinearAddress, DualCoilAddress {
 }
 
 export const parseAddress = (address: number | DualCoilAddress): Address => {
