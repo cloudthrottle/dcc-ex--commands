@@ -1,0 +1,32 @@
+{
+  "name": "@cloudthrottle/dcc-ex--commands",
+  "version": "0.0.1",
+  "description": "A library for creating DCC++EX commands.",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "build": "rm -rf lib && npx tsc -p tsconfig.json && npx tsc -p tsconfig-cjs.json",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudthrottle/dcc-ex--commands.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudthrottle/dcc-ex--commands/issues"
+  },
+  "homepage": "https://github.com/cloudthrottle/dcc-ex--commands#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.3",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
