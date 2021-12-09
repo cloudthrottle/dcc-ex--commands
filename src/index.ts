@@ -1,5 +1,5 @@
 export * from './types'
-export * from './commands/utils'
+export * from './utils'
 export * from './commands/accessories'
 export * from './commands/cabs'
 export * from './commands/decoders'
