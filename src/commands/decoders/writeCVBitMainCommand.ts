@@ -3,7 +3,7 @@ import { makeCommand } from '../utils'
 
 export interface WriteCVBitMainCommandParams { cab: number, cv: number, bit: number, value: Active }
 
-const writeDecoderBitKey = 'b'
+const writeMainDecoderBitKey = 'b'
 
 /**
  * WRITE CV BIT TO ENGINE DECODER ON MAIN TRACK
@@ -11,7 +11,7 @@ const writeDecoderBitKey = 'b'
  */
 export const writeCVBitMainCommand: (params: WriteCVBitMainCommandParams) => string = function ({ cab, cv, bit, value }) {
   const attributes = [
-    writeDecoderBitKey,
+    writeMainDecoderBitKey,
     cab,
     cv,
     bit,

@@ -2,7 +2,7 @@ import { makeCommand } from '../utils'
 
 export interface WriteCVByteMainCommandParams { cab: number, cv: number, value: number }
 
-const writeDecoderByteKey = 'w'
+const writeMainDecoderByteKey = 'w'
 
 /**
  * WRITE CV BYTE TO ENGINE DECODER ON MAIN TRACK
@@ -10,7 +10,7 @@ const writeDecoderByteKey = 'w'
  */
 export const writeCVByteMainCommand: (params: WriteCVByteMainCommandParams) => string = ({ cab, cv, value }) => {
   const attributes = [
-    writeDecoderByteKey,
+    writeMainDecoderByteKey,
     cab,
     cv,
     value
