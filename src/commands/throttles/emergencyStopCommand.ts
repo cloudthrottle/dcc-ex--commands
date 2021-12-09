@@ -1,4 +1,4 @@
-import {makeCommand} from "../utils";
+import { makeCommand } from '../utils'
 
 const emergencyStopCommandKey = '!'
 
@@ -7,4 +7,4 @@ const emergencyStopCommandKey = '!'
  */
 export const emergencyStopCommand: () => string = () => {
   return makeCommand(emergencyStopCommandKey)
-};
+}
