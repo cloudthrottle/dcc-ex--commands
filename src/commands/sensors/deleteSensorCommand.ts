@@ -1,6 +1,8 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface SensorCommandParams { sensor: number }
+export interface SensorCommandParams {
+  sensor: number
+}
 
 const deleteSensorCommandKey = 'S'
 
@@ -12,6 +14,5 @@ export const deleteSensorCommand: (params: SensorCommandParams) => string = ({ s
     deleteSensorCommandKey,
     sensor
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

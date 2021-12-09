@@ -1,4 +1,4 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 const diagnosticCabsCommandKey = 'D'
 
@@ -7,13 +7,12 @@ const diagnosticCabsCommandKey = 'D'
  * https://dcc-ex.com/reference/software/command-reference.html#diagnostics
  * @returns {string|null|{readonly returnString: null, readonly sendString: string, constant: string, returnsKey: null, key: string}}
  */
-export function diagnosticCabsCommand () {
+export const diagnosticCabsCommand: () => string = () => {
   const constant = 'CABS'
 
   const attributes = [
     diagnosticCabsCommandKey,
     constant
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

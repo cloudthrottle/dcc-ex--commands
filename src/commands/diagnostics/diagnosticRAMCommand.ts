@@ -1,5 +1,4 @@
-
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 const diagnosticRAMCommandKey = 'D'
 
@@ -13,6 +12,5 @@ export const diagnosticRAMCommand: () => string = () => {
     diagnosticRAMCommandKey,
     constant
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

@@ -1,6 +1,9 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DefineVPINTurnoutCommandParams { turnout: number, pin: number }
+export interface DefineVPINTurnoutCommandParams {
+  turnout: number
+  pin: number
+}
 
 const defineVPINTurnoutCommandKey = 'T'
 
@@ -15,6 +18,5 @@ export const defineVPINTurnoutCommand: (params: DefineVPINTurnoutCommandParams) 
     constant,
     pin
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

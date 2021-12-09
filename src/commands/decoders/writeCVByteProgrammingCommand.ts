@@ -1,4 +1,4 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 export interface WriteCVByteProgrammingCommandParams {
   cv: number
@@ -26,6 +26,5 @@ export const writeCVByteProgrammingCommand: (params: WriteCVByteProgrammingComma
     callbackNum,
     callbackSub
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

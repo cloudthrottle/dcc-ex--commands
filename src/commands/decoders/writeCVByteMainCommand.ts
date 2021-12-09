@@ -1,6 +1,10 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface WriteCVByteMainCommandParams { cab: number, cv: number, value: number }
+export interface WriteCVByteMainCommandParams {
+  cab: number
+  cv: number
+  value: number
+}
 
 const writeMainDecoderByteKey = 'w'
 
@@ -15,6 +19,5 @@ export const writeCVByteMainCommand: (params: WriteCVByteMainCommandParams) => s
     cv,
     value
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

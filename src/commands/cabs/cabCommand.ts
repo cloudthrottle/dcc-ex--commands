@@ -1,7 +1,11 @@
-import { makeCommand } from '../utils'
 import { BitValue } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface CabCommandParams { cab: number, func: number, value: BitValue }
+export interface CabCommandParams {
+  cab: number
+  func: number
+  value: BitValue
+}
 
 const cabSendKey = 'F'
 
@@ -15,6 +19,5 @@ export const cabCommand: (params: CabCommandParams) => string = ({ cab, func, va
     func,
     value
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

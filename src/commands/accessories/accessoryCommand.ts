@@ -1,8 +1,11 @@
 import { parseAddress, ParseAddressParams } from '../utils/parseAddress'
-import { makeCommand } from '../utils'
 import { Active } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface AccessoryCommandParams { address: ParseAddressParams, active: Active }
+export interface AccessoryCommandParams {
+  address: ParseAddressParams
+  active: Active
+}
 
 const accessorySendKey = 'a'
 
@@ -19,6 +22,5 @@ export const accessoryCommand: (params: AccessoryCommandParams) => string = ({ a
     addressSend,
     active
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

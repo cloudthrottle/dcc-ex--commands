@@ -1,7 +1,11 @@
-import { makeCommand } from '../utils'
 import { BitValue } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DefineSensorCommandParams { sensor: number, pin: number, pullUp: BitValue }
+export interface DefineSensorCommandParams {
+  sensor: number
+  pin: number
+  pullUp: BitValue
+}
 
 const defineSensorCommandKey = 'S'
 
@@ -15,6 +19,5 @@ export const defineSensorCommand: (params: DefineSensorCommandParams) => string 
     pin,
     pullUp
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

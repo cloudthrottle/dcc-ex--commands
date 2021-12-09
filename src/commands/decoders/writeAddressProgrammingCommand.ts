@@ -1,6 +1,8 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface WriteAddressProgrammingCommandParams { address: number }
+export interface WriteAddressProgrammingCommandParams {
+  address: number
+}
 
 const writeDecoderAddressKey = 'W'
 
@@ -13,6 +15,5 @@ export const writeAddressProgrammingCommand: (params: WriteAddressProgrammingCom
     writeDecoderAddressKey,
     address
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

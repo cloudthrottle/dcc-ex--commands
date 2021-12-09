@@ -1,4 +1,4 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 export enum Direction {
   REVERSE = 0,
@@ -23,10 +23,9 @@ export const throttleCommand: (params: ThrottleCommandParams) => string = ({ cab
   const attributes = [
     throttleCommandKey,
     legacyAttribute,
-    cab.toString(),
-    speed.toString(),
-    direction.toString()
+    cab,
+    speed,
+    direction
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

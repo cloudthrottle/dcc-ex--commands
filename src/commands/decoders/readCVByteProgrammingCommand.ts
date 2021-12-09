@@ -1,6 +1,10 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface ReadCVByteProgrammingCommandParams { cv: number, callbackNum: number, callbackSub: number }
+export interface ReadCVByteProgrammingCommandParams {
+  cv: number
+  callbackNum: number
+  callbackSub: number
+}
 
 const readProgrammingDecoderByteKey = 'R'
 
@@ -19,6 +23,5 @@ export const readCVByteProgrammingCommand: (params: ReadCVByteProgrammingCommand
     callbackNum,
     callbackSub
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

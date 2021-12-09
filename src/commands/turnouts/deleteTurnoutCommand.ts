@@ -1,8 +1,11 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 const deleteTurnoutCommandKey = 'T'
 
-interface DeleteTurnoutCommandParams { turnout: any }
+interface DeleteTurnoutCommandParams {
+  turnout: number
+}
+
 /**
  *
  * @param {number} turnout
@@ -13,6 +16,5 @@ export const deleteTurnoutCommand: (params: DeleteTurnoutCommandParams) => strin
     deleteTurnoutCommandKey,
     turnout
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

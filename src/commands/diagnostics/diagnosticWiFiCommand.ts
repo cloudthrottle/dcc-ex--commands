@@ -1,7 +1,9 @@
-import { makeCommand } from '../utils'
 import { Active } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DiagnosticWiFiCommandParams { enable: Active }
+export interface DiagnosticWiFiCommandParams {
+  enable: Active
+}
 
 const diagnosticWiFiCommandKey = 'D'
 
@@ -15,6 +17,5 @@ export const diagnosticWiFiCommand: (params: DiagnosticWiFiCommandParams) => str
     constant,
     enable
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

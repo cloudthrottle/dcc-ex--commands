@@ -1,4 +1,4 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 export enum TransitionProfile {
   IMMEDIATE = 0,
@@ -21,7 +21,13 @@ const defineServoTurnoutCommandKey = 'T'
 /**
  * https://dcc-ex.com/reference/software/command-reference.html#defining-setting-up-a-turnout
  */
-export const defineServoTurnoutCommand: (params: DefineServoTurnoutCommandParams) => string = ({ turnout, pin, thrownPosition, closedPosition, profile }) => {
+export const defineServoTurnoutCommand: (params: DefineServoTurnoutCommandParams) => string = ({
+  turnout,
+  pin,
+  thrownPosition,
+  closedPosition,
+  profile
+}) => {
   const constant = 'SERVO'
   const attributes = [
     defineServoTurnoutCommandKey,
@@ -32,6 +38,5 @@ export const defineServoTurnoutCommand: (params: DefineServoTurnoutCommandParams
     closedPosition,
     profile
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

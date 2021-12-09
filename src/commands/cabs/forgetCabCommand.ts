@@ -1,5 +1,4 @@
-import { makeCommand } from '../utils'
-import { BitValue } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 const forgetCabCommandKey = '-'
 
@@ -15,6 +14,5 @@ export const forgetCabCommand: (params: ForgerCabCommandParams) => string = ({ c
     forgetCabCommandKey,
     cab
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

@@ -1,9 +1,10 @@
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 export enum TurnoutState {
   CLOSED = 0,
   THROWN = 1
 }
+
 export interface TurnoutCommandParams {
   turnout: number
   thrown: TurnoutState
@@ -18,8 +19,7 @@ export const turnoutCommand: (params: TurnoutCommandParams) => string = ({ turno
   const attributes = [
     turnoutCommandKey,
     turnout,
-    thrown.toString()
+    thrown
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

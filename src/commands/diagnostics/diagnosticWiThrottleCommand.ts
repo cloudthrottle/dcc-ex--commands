@@ -1,7 +1,9 @@
-import { makeCommand } from '../utils'
 import { Active } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DiagnosticWiThrottleCommandParams { enable: Active }
+export interface DiagnosticWiThrottleCommandParams {
+  enable: Active
+}
 
 const diagnosticWiThrottleCommandKey = 'D'
 
@@ -15,6 +17,5 @@ export const diagnosticWiThrottleCommand: (params: DiagnosticWiThrottleCommandPa
     constant,
     enable
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

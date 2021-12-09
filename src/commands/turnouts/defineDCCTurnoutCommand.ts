@@ -1,14 +1,21 @@
-import { makeCommand, parseAddress } from '../utils'
+import { parseAddress } from '../utils'
 import { ParseAddressParams } from '../utils/parseAddress'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
 const defineDCCTurnoutCommandKey = 'T'
 
-export interface DefineDCCTurnoutCommandParams { turnout: number, address: ParseAddressParams }
+export interface DefineDCCTurnoutCommandParams {
+  turnout: number
+  address: ParseAddressParams
+}
 
 /**
  * https://dcc-ex.com/reference/software/command-reference.html#defining-setting-up-a-turnout
  */
-export const defineDCCTurnoutCommand: (params: DefineDCCTurnoutCommandParams) => string = function ({ turnout, address }) {
+export const defineDCCTurnoutCommand: (params: DefineDCCTurnoutCommandParams) => string = function ({
+  turnout,
+  address
+}) {
   const constant = 'DCC'
   const { linearAddress, primaryAddress, subAddress } = parseAddress(address)
   const addressSend = linearAddress || `${primaryAddress} ${subAddress}`
@@ -18,6 +25,5 @@ export const defineDCCTurnoutCommand: (params: DefineDCCTurnoutCommandParams) =>
     constant,
     addressSend
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

@@ -1,7 +1,12 @@
 import { BitValue } from '../../types'
-import { makeCommand } from '../utils'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface WriteCVBitMainCommandParams { cab: number, cv: number, bit: number, value: BitValue }
+export interface WriteCVBitMainCommandParams {
+  cab: number
+  cv: number
+  bit: number
+  value: BitValue
+}
 
 const writeMainDecoderBitKey = 'b'
 
@@ -17,6 +22,5 @@ export const writeCVBitMainCommand: (params: WriteCVBitMainCommandParams) => str
     bit,
     value
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

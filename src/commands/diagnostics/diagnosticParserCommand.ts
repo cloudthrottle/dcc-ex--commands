@@ -1,7 +1,9 @@
-import { makeCommand } from '../utils'
 import { Active } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DiagnosticParserCommandParams { enable: Active }
+export interface DiagnosticParserCommandParams {
+  enable: Active
+}
 
 const diagnosticParserCommandKey = 'D'
 
@@ -15,6 +17,5 @@ export const diagnosticParserCommand: (params: DiagnosticParserCommandParams) =>
     constant,
     enable
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }

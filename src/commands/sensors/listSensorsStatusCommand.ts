@@ -2,6 +2,4 @@ import { makeCommand } from '../utils'
 
 const listSensorsStatusCommandKey = 'Q'
 
-export function listSensorsStatusCommand () {
-  return makeCommand(listSensorsStatusCommandKey)
-}
+export const listSensorsStatusCommand: () => string = () => makeCommand(listSensorsStatusCommandKey)

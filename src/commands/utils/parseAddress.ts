@@ -2,9 +2,11 @@ export interface DualCoilAddress {
   primaryAddress: number | null
   subAddress: number | null
 }
+
 export interface LinearAddress {
   linearAddress: number | null
 }
+
 export type Address = LinearAddress & DualCoilAddress
 export type ParseAddressParams = number | DualCoilAddress
 

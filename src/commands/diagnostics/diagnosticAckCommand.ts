@@ -1,7 +1,9 @@
-import { makeCommand } from '../utils'
 import { Active } from '../../types'
+import { makeCommandFromAttributes } from '../utils/makeCommand'
 
-export interface DiagnosticAckCommandParams { enable: Active }
+export interface DiagnosticAckCommandParams {
+  enable: Active
+}
 
 const diagnosticAckCommandKey = 'D'
 
@@ -15,6 +17,5 @@ export const diagnosticAckCommand: (params: DiagnosticAckCommandParams) => strin
     constant,
     enable
   ]
-  const str = attributes.join(' ')
-  return makeCommand(str)
+  return makeCommandFromAttributes(attributes)
 }
