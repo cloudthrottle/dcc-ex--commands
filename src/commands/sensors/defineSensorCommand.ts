@@ -1,14 +1,14 @@
-import {makeCommand} from "../utils";
-import {BitValue} from "../../types";
+import { makeCommand } from '../utils'
+import { BitValue } from '../../types'
 
-export type DefineSensorCommandParams = { sensor: number; pin: number; pullUp: BitValue };
+export interface DefineSensorCommandParams { sensor: number, pin: number, pullUp: BitValue }
 
-const defineSensorCommandKey = "S"
+const defineSensorCommandKey = 'S'
 
 /**
  * https://dcc-ex.com/reference/software/command-reference.html#sensors-inputs
  */
-export const defineSensorCommand: (params: DefineSensorCommandParams) => string = ({sensor, pin, pullUp}) => {
+export const defineSensorCommand: (params: DefineSensorCommandParams) => string = ({ sensor, pin, pullUp }) => {
   const attributes = [
     defineSensorCommandKey,
     sensor,
@@ -17,4 +17,4 @@ export const defineSensorCommand: (params: DefineSensorCommandParams) => string 
   ]
   const str = attributes.join(' ')
   return makeCommand(str)
-};
+}
