@@ -5,6 +5,9 @@ export interface CabCommandParams { cab: number, func: number, value: Active }
 
 const cabSendKey = 'F'
 
+/**
+ * https://dcc-ex.com/reference/software/command-reference.html#cab-functions
+ */
 export const cabCommand: (params: CabCommandParams) => string = ({ cab, func, value }) => {
   const attributes = [
     cabSendKey,
