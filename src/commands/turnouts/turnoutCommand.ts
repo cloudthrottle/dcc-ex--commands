@@ -6,7 +6,7 @@ export enum TurnoutState {
 }
 export interface TurnoutCommandParams {
   turnout: number
-  thrown: TurnoutState.CLOSED | TurnoutState.THROWN
+  thrown: TurnoutState
 }
 
 const turnoutCommandKey = 'T'

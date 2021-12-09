@@ -6,8 +6,7 @@ export enum Track {
   PROG = 'PROG',
   JOIN = 'JOIN'
 }
-export type TrackStrings = keyof typeof Track
-export interface PowerCommandParams { power: Active, track?: TrackStrings }
+export interface PowerCommandParams { power: Active, track?: Track }
 
 /**
  * https://dcc-ex.com/reference/software/command-reference.html#track-power-commands

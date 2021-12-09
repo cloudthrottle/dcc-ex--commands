@@ -10,7 +10,7 @@ export type Speed = -1 | number
 export interface ThrottleCommandParams {
   cab: number
   speed: Speed
-  direction: Direction.REVERSE | Direction.FORWARD
+  direction: Direction
 }
 
 const throttleCommandKey = 't'
