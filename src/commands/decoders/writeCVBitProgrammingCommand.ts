@@ -1,10 +1,10 @@
 import { makeCommand } from '../utils'
-import { Active } from '../../types'
+import { BitValue } from '../../types'
 
 export interface WriteCVBitProgrammingCommandParams {
   cv: number
   bit: number
-  value: Active
+  value: BitValue
   callbackNum: number
   callbackSub: number
 }

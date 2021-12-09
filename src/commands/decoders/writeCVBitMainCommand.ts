@@ -1,7 +1,7 @@
-import { Active } from '../../types'
+import { BitValue } from '../../types'
 import { makeCommand } from '../utils'
 
-export interface WriteCVBitMainCommandParams { cab: number, cv: number, bit: number, value: Active }
+export interface WriteCVBitMainCommandParams { cab: number, cv: number, bit: number, value: BitValue }
 
 const writeMainDecoderBitKey = 'b'
 

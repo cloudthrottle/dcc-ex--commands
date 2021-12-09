@@ -1,7 +1,7 @@
 import { makeCommand } from '../utils'
-import { Active } from '../../types'
+import { BitValue } from '../../types'
 
-export interface CabCommandParams { cab: number, func: number, value: Active }
+export interface CabCommandParams { cab: number, func: number, value: BitValue }
 
 const cabSendKey = 'F'
 

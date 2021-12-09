@@ -1,7 +1,7 @@
 import { makeCommand } from '../utils'
-import { Active } from '../../types'
+import { BitValue } from '../../types'
 
-export interface VerifyCVBitProgrammingCommandParams { cv: number, bit: number, bitValue: Active }
+export interface VerifyCVBitProgrammingCommandParams { cv: number, bit: number, bitValue: BitValue }
 
 const verifyProgrammingDecoderBitKey = 'V'
 
