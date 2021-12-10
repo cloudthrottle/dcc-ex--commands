@@ -1,4 +1,4 @@
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
+import { makeCommandFromAttributes } from '../..'
 
 export interface ReadCVByteProgrammingCommandParams {
   cv: number

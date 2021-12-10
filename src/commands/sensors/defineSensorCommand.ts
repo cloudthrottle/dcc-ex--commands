@@ -1,5 +1,5 @@
 import { BitValue } from '../../types'
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
+import { makeCommandFromAttributes } from '../../utils'
 
 export interface DefineSensorCommandParams {
   sensor: number

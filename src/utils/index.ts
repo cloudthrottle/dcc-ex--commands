@@ -1,7 +1,2 @@
-import { makeCommand } from './makeCommand'
-import { parseAddress } from './parseAddress'
-
-export {
-  makeCommand,
-  parseAddress
-}
+export * from './makeCommand'
+export * from './parseAddress'

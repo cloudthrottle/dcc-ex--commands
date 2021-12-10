@@ -1,5 +1,5 @@
 import { Active } from '../../types'
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
+import { makeCommandFromAttributes } from '../../utils'
 
 export interface DiagnosticAckCommandParams {
   enable: Active

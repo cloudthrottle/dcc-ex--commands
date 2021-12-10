@@ -1,6 +1,5 @@
-import { parseAddress } from '../../utils'
+import { makeCommandFromAttributes, parseAddress } from '../../utils'
 import { ParseAddressParams } from '../../utils/parseAddress'
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
 
 const defineDCCTurnoutCommandKey = 'T'
 
