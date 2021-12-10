@@ -1,6 +1,5 @@
-import { parseAddress, ParseAddressParams } from '../../utils/parseAddress'
+import { makeCommandFromAttributes, parseAddress, ParseAddressParams } from '../../utils'
 import { Active } from '../../types'
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
 
 export interface AccessoryCommandParams {
   address: ParseAddressParams

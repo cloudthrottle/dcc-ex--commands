@@ -1,5 +1,5 @@
+import { makeCommandFromAttributes } from '../..'
 import { BitValue } from '../../types'
-import { makeCommandFromAttributes } from '../../utils/makeCommand'
 
 export interface VerifyCVBitProgrammingCommandParams {
   cv: number
