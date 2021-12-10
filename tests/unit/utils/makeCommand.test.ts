@@ -1,5 +1,4 @@
-import {makeCommand} from "../../../src";
-import {makeCommandFromAttributes} from "../../../src";
+import {makeCommand, makeCommandFromAttributes} from "../../../src";
 
 describe('makeCommand()', function () {
     it('returns the argument wrapped in < >', function () {
