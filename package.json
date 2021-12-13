@@ -7,6 +7,16 @@
   "files": [
     "lib/"
   ],
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.js"
+  },
+  "types": "./lib/esm/index.d.js",
+  "keywords": [
+    "dcc",
+    "dcc++",
+    "dcc++ex"
+  ],
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "build": "rm -rf lib && npx tsc -p tsconfig.json && npx tsc -p tsconfig-cjs.json",
