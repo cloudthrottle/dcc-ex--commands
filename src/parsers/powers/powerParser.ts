@@ -1,5 +1,6 @@
-import { Command } from '../../utils'
-import { ParserKeyError } from '../errors'
+import {Command} from '../../utils'
+import {ParserKeyError} from '../errors'
+import {ParserResult, ParserStatus} from "../../types";
 
 export enum ReturnTrack {
   ALL = 'ALL',
@@ -8,7 +9,7 @@ export enum ReturnTrack {
   JOIN = 'JOIN'
 }
 
-export interface Power {
+export interface Power extends ParserResult{
   power: number
   track: ReturnTrack
 }
@@ -33,6 +34,7 @@ export const powerParser: (params: Command) => Power = ({ key: potentialKey, att
   }
 
   return {
+    status: ParserStatus.SUCCESS,
     power: parseInt(power),
     track: track as ReturnTrack
   }

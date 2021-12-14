@@ -1,41 +1,38 @@
-import {ParserKeyError, powerParser, ReturnTrack} from "../../../../src";
+import {parseCommand, ParserKeyError, ParserStatus, powerParser, ReturnTrack, storeParser} from "../../../../src";
 
 describe('powerParser()', function () {
     it("parses '<p1 MAIN>'", () => {
-        const result = powerParser({
-            key: "p1",
-            attributes: ["MAIN"]
-        })
+        const commandParams = parseCommand('<p1 MAIN>')
+        const result = powerParser(commandParams)
 
         const expected = {
             power: 1,
-            track: ReturnTrack.MAIN
+            track: ReturnTrack.MAIN,
+            status: ParserStatus.SUCCESS
         }
         expect(result).toEqual(expected)
     })
 
     it("parses '<p0 MAIN>'", () => {
-        const result = powerParser({
-            key: "p0",
-            attributes: ["MAIN"]
-        })
+        const commandParams = parseCommand('<p0 MAIN>')
+        const result = powerParser(commandParams)
 
         const expected = {
             power: 0,
-            track: ReturnTrack.MAIN
+            track: ReturnTrack.MAIN,
+            status: ParserStatus.SUCCESS
         }
         expect(result).toEqual(expected)
     })
 
     it("parses '<p1>'", () => {
-        const result = powerParser({
-            key: "p1",
-            attributes: []
-        })
+        const commandParams = parseCommand('<p1>')
+        const result = powerParser(commandParams)
 
         const expected = {
             power: 1,
-            track: ReturnTrack.ALL
+            track: ReturnTrack.ALL,
+            status: ParserStatus.SUCCESS
         }
         expect(result).toEqual(expected)
     })
@@ -43,7 +40,8 @@ describe('powerParser()', function () {
     describe('with incorrect key', function () {
         it('throws a ParserKeyError', function () {
             expect(() => {
-                powerParser({key: "test", attributes: []})
+                const commandParams = parseCommand('<incorrect-key>')
+                powerParser(commandParams)
             }).toThrowError(ParserKeyError)
         });
     });
