@@ -13,9 +13,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-      - run: npm ci
       - run: npm run lint
       - run: npm test
+      - run: npm ci
 
   package:
     name: Creates package
@@ -41,11 +41,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - node-version: 16.x
-            registry-url: 'https://registry.npmjs.org'
+          - registry-url: 'https://registry.npmjs.org'
             token_name: NPM_TOKEN
-          - node-version: 16.x
-            registry-url: 'https://npm.pkg.github.com'
+          - registry-url: 'https://npm.pkg.github.com'
             token_name: GITHUB_TOKEN
     steps:
       - name: Download Artifact
