@@ -15,6 +15,10 @@ export interface Power {
 
 const powerParserKey = 'p'
 
+function isPowerCommand (key: string, power: string): boolean {
+  return key === powerParserKey && ['0', '1'].includes(power)
+}
+
 export const powerParser: (params: Command) => Power = ({ key: potentialKey, attributes }) => {
   const [key, power] = potentialKey.split('')
 
@@ -32,8 +36,4 @@ export const powerParser: (params: Command) => Power = ({ key: potentialKey, att
     power: parseInt(power),
     track: track as ReturnTrack
   }
-}
-
-function isPowerCommand (key: string, power: string) {
-  return key === powerParserKey && ['0', '1'].includes(power)
 }
