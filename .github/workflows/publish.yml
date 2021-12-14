@@ -1,43 +1,33 @@
-name: Publish Package to npmjs
+name: Publish Package
 
 on:
   release:
     types: [published]
 
 jobs:
-  test-audit:
+  npm_publish:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-      - run: npm test
-      - run: npm audit
-
-  publish:
-    needs: test-audit
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  github_publish:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
-      - name: Set package registry
-        run: npm config set registry https://npm.pkg.github.com
-      - name: Github package registry authentication
-        run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GHPAT_TOKEN }}
-      - name: Npm registry authentication
-        run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - name: Publish package to Github and Npm package registries
-        run: npm publish
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
