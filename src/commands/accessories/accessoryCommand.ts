@@ -14,7 +14,7 @@ const accessorySendKey = 'a'
 export const accessoryCommand: (params: AccessoryCommandParams) => string = ({ address, active }) => {
   const { linearAddress, primaryAddress, subAddress } = parseAddress(address)
 
-  const addressSend = linearAddress ?? `${primaryAddress} ${subAddress}`
+  const addressSend = linearAddress ?? [primaryAddress, subAddress].join(' ')
 
   const attributes = [
     accessorySendKey,

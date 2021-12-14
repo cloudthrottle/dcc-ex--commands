@@ -17,7 +17,7 @@ export const defineDCCTurnoutCommand: (params: DefineDCCTurnoutCommandParams) =>
 }) {
   const constant = 'DCC'
   const { linearAddress, primaryAddress, subAddress } = parseAddress(address)
-  const addressSend = linearAddress || `${primaryAddress} ${subAddress}`
+  const addressSend = linearAddress ?? [primaryAddress, subAddress].join(' ')
   const attributes = [
     defineDCCTurnoutCommandKey,
     turnout,

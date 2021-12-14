@@ -11,7 +11,14 @@ export const makeCommandFromAttributes = (attributes: Array<string | number | un
 
       return attribute
     })
-    .filter(attribute => !!attribute)
+    .filter(attribute => !isBlank(attribute))
     .join(' ')
   return makeCommand(str)
+}
+
+function isBlank (param: string | undefined | null): boolean {
+  if (typeof param === 'string') {
+    return param.trim() === ''
+  }
+  return true
 }
