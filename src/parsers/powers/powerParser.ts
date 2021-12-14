@@ -1,6 +1,6 @@
-import {Command} from '../../utils'
-import {ParserKeyError} from '../errors'
-import {ParserResult, ParserStatus} from "../../types";
+import { Command } from '../../utils'
+import { ParserKeyError } from '../errors'
+import { ParserResult, ParserStatus } from '../../types'
 
 export enum ReturnTrack {
   ALL = 'ALL',

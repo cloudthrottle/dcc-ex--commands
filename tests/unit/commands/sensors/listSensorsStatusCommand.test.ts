@@ -1,9 +1,9 @@
-import {listSensorsStatusCommand} from "../../../../src";
+import { listSensorsStatusCommand } from '../../../../src'
 
 describe('listSensorsStatusCommand()', function () {
-    it('is valid', () => {
-        const sendString = '<Q>'
-        const command = listSensorsStatusCommand()
-        expect(command).toEqual(sendString)
-    })
+  it('is valid', () => {
+    const sendString = '<Q>'
+    const command = listSensorsStatusCommand()
+    expect(command).toEqual(sendString)
+  })
 })

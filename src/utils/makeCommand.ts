@@ -2,7 +2,7 @@ export const makeCommand = (instruction: string): string => {
   return `<${instruction}>`
 }
 
-export const makeCommandFromAttributes = (attributes: Array<string | number | undefined | null>) => {
+export const makeCommandFromAttributes = (attributes: Array<string | number | undefined | null>): string => {
   const str = attributes
     .map(attribute => {
       if (typeof attribute === 'number') {
