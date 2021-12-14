@@ -43,10 +43,10 @@ jobs:
         include:
           - node-version: 16.x
             registry-url: 'https://registry.npmjs.org'
-            node_auth_token: ${{ secrets.NPM_TOKEN }}
+            token_name: NPM_TOKEN
           - node-version: 16.x
             registry-url: 'https://npm.pkg.github.com'
-            node_auth_token: ${{ secrets.GITHUB_TOKEN }}
+            token_name: GITHUB_TOKEN
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v2
@@ -58,4 +58,4 @@ jobs:
           registry-url: ${{ matrix.registry-url }}
       - run: npm publish $(ls *.tgz)
         env:
-          NODE_AUTH_TOKEN: ${{ matrix.node_auth_token }}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.token_name] }}
