@@ -47,7 +47,6 @@ console.log(commandString)
 ## Documentation
 
 - [Documentation](https://github.com/cloudthrottle/dcc-ex--commands/wiki)
-- [Available Commands](https://github.com/cloudthrottle/dcc-ex--commands/wiki/Commands)
 
 ## Developing
 
