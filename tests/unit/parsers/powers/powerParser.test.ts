@@ -1,4 +1,4 @@
-import {powerParser, ReturnTrack} from "../../../../src";
+import {ParserKeyError, powerParser, ReturnTrack} from "../../../../src";
 
 describe('powerParser()', function () {
     it("parses '<p1 MAIN>'", () => {
@@ -39,4 +39,12 @@ describe('powerParser()', function () {
         }
         expect(result).toEqual(expected)
     })
+
+    describe('with incorrect key', function () {
+        it('throws a ParserKeyError', function () {
+            expect(() => {
+                powerParser({key: "test", attributes: []})
+            }).toThrowError(ParserKeyError)
+        });
+    });
 })

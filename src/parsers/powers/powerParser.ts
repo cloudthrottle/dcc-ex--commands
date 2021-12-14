@@ -1,4 +1,5 @@
 import { Command } from '../../utils'
+import { ParserKeyError } from '../errors'
 
 export enum ReturnTrack {
   ALL = 'ALL',
@@ -18,10 +19,10 @@ export const powerParser: (params: Command) => Power = ({ key: potentialKey, att
   const [key, power] = potentialKey.split('')
 
   if (!isPowerCommand(key, power)) {
-    throw `Can not parse. ${key}, ${attributes}`
+    throw new ParserKeyError('powerParser', key)
   }
 
-  let [track, _] = attributes
+  let [track] = attributes
 
   if (!Object.values(ReturnTrack).includes(track as ReturnTrack)) {
     track = ReturnTrack.ALL
@@ -34,5 +35,5 @@ export const powerParser: (params: Command) => Power = ({ key: potentialKey, att
 }
 
 function isPowerCommand (key: string, power: string) {
-  return key === powerParserKey && (power === '1' || power === '0')
+  return key === powerParserKey && ['0', '1'].includes(power)
 }
