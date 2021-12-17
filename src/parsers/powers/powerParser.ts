@@ -8,19 +8,14 @@ export enum ReturnTrack {
   PROG = 'PROG',
   JOIN = 'JOIN'
 }
-
-export interface Power extends ParserResult{
+export interface PowerParams {
   power: number
   track: ReturnTrack
 }
+export type PowerResult = ParserResult<PowerParams>
+export const powerParserKey = 'p'
 
-const powerParserKey = 'p'
-
-function isPowerCommand (key: string, power: string): boolean {
-  return key === powerParserKey && ['0', '1'].includes(power)
-}
-
-export const powerParser: (params: Command) => Power = ({ key: potentialKey, attributes }) => {
+export const powerParser: (params: Command) => PowerResult = ({ key: potentialKey, attributes }) => {
   const [key, power] = potentialKey.split('')
 
   if (!isPowerCommand(key, power)) {
@@ -34,8 +29,15 @@ export const powerParser: (params: Command) => Power = ({ key: potentialKey, att
   }
 
   return {
+    key: powerParserKey,
     status: ParserStatus.SUCCESS,
-    power: parseInt(power),
-    track: track as ReturnTrack
+    params: {
+      power: parseInt(power),
+      track: track as ReturnTrack
+    }
   }
+}
+
+function isPowerCommand (key: string, power: string): boolean {
+  return key === powerParserKey && ['0', '1'].includes(power)
 }

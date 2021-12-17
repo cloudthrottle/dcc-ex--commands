@@ -6,8 +6,11 @@ describe('powerParser()', function () {
     const result = powerParser(commandParams)
 
     const expected = {
-      power: 1,
-      track: ReturnTrack.MAIN,
+      key: 'p',
+      params: {
+        power: 1,
+        track: ReturnTrack.MAIN
+      },
       status: ParserStatus.SUCCESS
     }
     expect(result).toEqual(expected)
@@ -18,8 +21,11 @@ describe('powerParser()', function () {
     const result = powerParser(commandParams)
 
     const expected = {
-      power: 0,
-      track: ReturnTrack.MAIN,
+      key: 'p',
+      params: {
+        power: 0,
+        track: ReturnTrack.MAIN
+      },
       status: ParserStatus.SUCCESS
     }
     expect(result).toEqual(expected)
@@ -30,8 +36,11 @@ describe('powerParser()', function () {
     const result = powerParser(commandParams)
 
     const expected = {
-      power: 1,
-      track: ReturnTrack.ALL,
+      key: 'p',
+      params: {
+        power: 1,
+        track: ReturnTrack.ALL
+      },
       status: ParserStatus.SUCCESS
     }
     expect(result).toEqual(expected)

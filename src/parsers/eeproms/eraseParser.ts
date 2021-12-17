@@ -2,14 +2,18 @@ import { Command } from '../../utils'
 import { ParserKeyError } from '../errors'
 import { ParserResult, ParserStatus } from '../../types'
 
-const eraseParserKey = '0'
+export type EraseParams = object
+export type EraseResult = ParserResult<EraseParams>
+export const eraseParserKey = '0'
 
-export const eraseParser: (params: Command) => ParserResult = ({ key }) => {
+export const eraseParser: (params: Command) => EraseResult = ({ key }) => {
   if (key !== eraseParserKey) {
     throw new ParserKeyError('eraseParser', key)
   }
 
   return {
-    status: ParserStatus.SUCCESS
+    key: eraseParserKey,
+    status: ParserStatus.SUCCESS,
+    params: {}
   }
 }

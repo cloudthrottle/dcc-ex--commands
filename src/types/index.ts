@@ -5,6 +5,8 @@ export enum ParserStatus {
   SUCCESS = 'success'
 }
 
-export interface ParserResult {
+export interface ParserResult<T> {
+  key: string
   status: ParserStatus
+  params: T
 }

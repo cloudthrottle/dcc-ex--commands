@@ -6,7 +6,9 @@ describe('storeParser()', function () {
     const result = storeParser(commandParams)
 
     const expected = {
-      status: ParserStatus.SUCCESS
+      key: 'e',
+      status: ParserStatus.SUCCESS,
+      params: {}
     }
     expect(result).toEqual(expected)
   })

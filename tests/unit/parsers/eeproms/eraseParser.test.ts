@@ -6,7 +6,9 @@ describe('eraseParser()', function () {
     const result = eraseParser(commandParams)
 
     const expected = {
-      status: ParserStatus.SUCCESS
+      key: '0',
+      status: ParserStatus.SUCCESS,
+      params: {}
     }
     expect(result).toEqual(expected)
   })
