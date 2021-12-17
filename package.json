@@ -1,6 +1,6 @@
 {
   "name": "@cloudthrottle/dcc-ex--commands",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A library for creating DCC++EX commands.",
   "author": {
     "name": "David Young (@dcyoung-dev)",
@@ -29,7 +29,7 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "prebuild": "rm -rf lib",
     "build:esm": "npx tsc -p tsconfig.json",
-    "build:cjs":"npx tsc -p tsconfig-cjs.json",
+    "build:cjs": "npx tsc -p tsconfig-cjs.json",
     "build:min": "npx esbuild src/index.ts --bundle --outfile=\"lib/dcc-ex--commands-$(node -p \"require('./package.json').version\").js\" --target=esnext --platform=neutral --sourcemap",
     "build": " npm run build:esm && npm run build:cjs  && npm run build:min",
     "prepublish": "npm run build",
