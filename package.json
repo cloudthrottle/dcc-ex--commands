@@ -2,6 +2,10 @@
   "name": "@cloudthrottle/dcc-ex--commands",
   "version": "0.1.11",
   "description": "A library for creating DCC++EX commands.",
+  "author": {
+    "name": "David Young (@dcyoung-dev)",
+    "url": "https://dcyoung.dev"
+  },
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "files": [
@@ -28,12 +32,15 @@
     "type": "git",
     "url": "git+https://github.com/cloudthrottle/dcc-ex--commands.git"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cloudthrottle/dcc-ex--commands/issues"
   },
   "homepage": "https://github.com/cloudthrottle/dcc-ex--commands#readme",
+  "engines": {
+    "node": ">=16.8.0",
+    "npm": ">=8.1.0"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "jest": "^27.4.3",
