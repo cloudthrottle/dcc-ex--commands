@@ -1,1 +1,1 @@
-export * from './parserKeyError'
+export * from './parserKeyError.js'

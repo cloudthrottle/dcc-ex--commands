@@ -1,3 +1,3 @@
-export * from './makeCommand'
-export * from './parseAddress'
-export * from './parseCommand'
+export * from './makeCommand.js'
+export * from './parseAddress.js'
+export * from './parseCommand.js'

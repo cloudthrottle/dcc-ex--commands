@@ -1,2 +1,2 @@
-export * from './eraseParser'
-export * from './storeParser'
+export * from './eraseParser.js'
+export * from './storeParser.js'

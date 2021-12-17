@@ -1,4 +1,4 @@
-import { makeCommandFromAttributes } from '../..'
+import { makeCommandFromAttributes } from '../../utils'
 
 const forgetCabCommandKey = '-'
 

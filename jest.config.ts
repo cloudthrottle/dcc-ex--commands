@@ -5,9 +5,16 @@ const config: Config.InitialOptions = {
   clearMocks: true,
   coverageProvider: 'babel',
   testEnvironment: 'node',
-  transform: {
-    '^.+\\.ts?$': 'ts-jest'
-  }
+  preset: 'ts-jest/presets/default-esm', // or other ESM presets
+  globals: {
+    'ts-jest': {
+      useESM: true,
+    },
+  },
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+  transform: {}
 }
 
 export default config

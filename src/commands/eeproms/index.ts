@@ -1,2 +1,2 @@
-export * from './storeCommand'
-export * from './eraseCommand'
+export * from './storeCommand.js'
+export * from './eraseCommand.js'

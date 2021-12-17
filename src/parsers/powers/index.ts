@@ -1,1 +1,1 @@
-export * from './powerParser'
+export * from './powerParser.js'

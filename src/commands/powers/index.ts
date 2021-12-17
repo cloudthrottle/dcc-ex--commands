@@ -1,1 +1,1 @@
-export * from './powerCommand'
+export * from './powerCommand.js'
