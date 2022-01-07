@@ -1,18 +1,18 @@
 import { Command } from '../../utils'
 import { ParserAttributeError, ParserKeyError } from '../errors'
 import { ParserResult, ParserStatus } from '../../types'
-import { Direction } from '../../commands'
+import {Direction, Speed} from '../../commands'
 
 export interface ThrottleParams {
-  cab: number
-  speed: number
+  register: number
+  speed: Speed
   direction: Direction
 }
 export type ThrottleResult = ParserResult<ThrottleParams>
 export const throttleParserKey = 'T'
 
 export const throttleParser: (params: Command) => ThrottleResult = ({ key, attributes }) => {
-  const [cab, speed, directionString] = attributes
+  const [register, speed, directionString] = attributes
 
   if (key !== throttleParserKey) {
     throw new ParserKeyError('cabParser', key)
@@ -28,7 +28,7 @@ export const throttleParser: (params: Command) => ThrottleResult = ({ key, attri
     key: throttleParserKey,
     status: ParserStatus.SUCCESS,
     params: {
-      cab: parseInt(cab),
+      register: parseInt(register),
       speed: parseInt(speed),
       direction: direction as Direction
     }

@@ -15,7 +15,7 @@ describe('throttleParser()', function () {
     const expected = {
       key: 'T',
       params: {
-        cab: 1,
+        register: 1,
         speed: 20,
         direction: Direction.FORWARD
       },
