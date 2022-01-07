@@ -7,7 +7,6 @@
     "url": "https://dcyoung.dev"
   },
   "type": "module",
-  "module": "./lib/esm/index.js",
   "files": [
     "lib/"
   ],
@@ -19,6 +18,7 @@
     }
   },
   "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "types": "./lib/types/index.d.ts",
   "keywords": [
     "dcc",
@@ -31,7 +31,8 @@
     "build:esm": "npx tsc -p tsconfig.json",
     "build:cjs": "npx tsc -p tsconfig-cjs.json",
     "build:min": "npx esbuild src/index.ts --bundle --outfile=\"lib/dcc-ex--commands-$(node -p \"require('./package.json').version\").js\" --target=esnext --platform=neutral --sourcemap",
-    "build": " npm run build:esm && npm run build:cjs  && npm run build:min",
+    "build:fixup": "bin/fixup",
+    "build": " npm run build:esm && npm run build:cjs && npm run build:min && npm run build:fixup",
     "prepublish": "npm run build",
     "lint": "npx ts-standard --env jest",
     "lint:fix": "npx ts-standard --env jest --fix"
