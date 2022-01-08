@@ -1,7 +1,7 @@
 import { Command } from '../../utils'
 import { ParserAttributeError, ParserKeyError } from '../errors'
 import { ParserResult, ParserStatus } from '../../types'
-import {Direction, Speed} from '../../commands'
+import { Direction, Speed } from '../../commands'
 
 export interface ThrottleParams {
   register: number
