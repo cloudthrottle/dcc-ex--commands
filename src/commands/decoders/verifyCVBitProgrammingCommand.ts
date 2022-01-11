@@ -1,5 +1,5 @@
 import { makeCommandFromAttributes } from '../../utils/index.js'
-import { BitValue } from '../../types'
+import { BitValue } from '../../types/index.js'
 
 export interface VerifyCVBitProgrammingCommandParams {
   cv: number

@@ -1,5 +1,5 @@
 import { makeCommandFromAttributes, parseAddress, ParseAddressParams } from '../../utils/index.js'
-import { Active } from '../../types/'
+import { Active } from '../../types/index.js'
 
 export interface AccessoryCommandParams {
   address: ParseAddressParams

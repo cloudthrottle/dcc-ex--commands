@@ -1,4 +1,4 @@
-import { Active } from '../../types'
+import { Active } from '../../types/index.js'
 import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface DiagnosticParserCommandParams {

@@ -1,6 +1,6 @@
 import { Command } from '../../utils/index.js'
 import { ParserKeyError } from '../errors/index.js'
-import { ParserResult, ParserStatus } from '../../types'
+import { ParserResult, ParserStatus } from '../../types/index.js'
 
 export enum ReturnTrack {
   ALL = 'ALL',

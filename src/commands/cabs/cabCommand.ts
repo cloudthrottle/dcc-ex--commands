@@ -1,4 +1,4 @@
-import { BitValue } from '../../types'
+import { BitValue } from '../../types/index.js'
 import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface CabCommandParams {

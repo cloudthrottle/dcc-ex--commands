@@ -1,6 +1,6 @@
 import { Command } from '../../utils/index.js'
 import { ParserAttributeError, ParserKeyError } from '../errors/index.js'
-import { ParserResult, ParserStatus } from '../../types'
+import { ParserResult, ParserStatus } from '../../types/index.js'
 import { Direction, Speed } from '../../commands/index.js'
 
 export interface ThrottleParams {
