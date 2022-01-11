@@ -1,4 +1,4 @@
-import { makeCommandFromAttributes } from '../../utils'
+import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export enum Direction {
   REVERSE = 0,

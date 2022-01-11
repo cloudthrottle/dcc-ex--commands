@@ -1,5 +1,5 @@
 import { Active } from '../../types'
-import { makeCommandFromAttributes } from '../../utils'
+import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface DiagnosticWiFiCommandParams {
   enable: Active

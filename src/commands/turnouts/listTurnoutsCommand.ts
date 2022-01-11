@@ -1,4 +1,4 @@
-import { makeCommand } from '../../utils'
+import { makeCommand } from '../../utils/index.js'
 
 const listTurnoutsCommandKey = 'T'
 

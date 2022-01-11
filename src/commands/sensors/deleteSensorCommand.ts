@@ -1,4 +1,4 @@
-import { makeCommandFromAttributes } from '../../utils'
+import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface SensorCommandParams {
   sensor: number

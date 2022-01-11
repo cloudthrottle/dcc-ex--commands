@@ -1,5 +1,5 @@
-import { Command } from '../../utils'
-import { ParserKeyError } from '../errors'
+import { Command } from '../../utils/index.js'
+import { ParserKeyError } from '../errors/index.js'
 import { ParserResult, ParserStatus } from '../../types'
 
 export type StoreParams = object
