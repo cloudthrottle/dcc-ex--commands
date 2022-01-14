@@ -1,6 +1,6 @@
 import { parseCommand, ParserKeyError, ParserStatus, rosterItemParser } from '../../../../src'
 
-describe('throttleParser()', function () {
+describe('rosterItemParser()', function () {
   describe('without function descriptions', function () {
     it('parses `<j 70 "My Loco">`', () => {
       const commandParams = parseCommand('<j 70 "My Loco">')
