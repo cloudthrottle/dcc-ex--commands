@@ -1,12 +1,12 @@
-import { eraseParser, parseCommand, ParserKeyError, ParserStatus } from '../../../../src'
+import { eraseParser, FunctionName, ParserKeyError, ParserResult, ParserStatus } from '../../../../src'
 
 describe('eraseParser()', function () {
   it("parses '<0>'", () => {
-    const commandParams = parseCommand('<0>')
-    const result = eraseParser(commandParams)
+    const result = eraseParser('<0>')
 
-    const expected = {
+    const expected: ParserResult<any> = {
       key: '0',
+      parser: FunctionName.EEPROMS_ERASE,
       status: ParserStatus.SUCCESS,
       params: {}
     }
@@ -16,8 +16,7 @@ describe('eraseParser()', function () {
   describe('with incorrect key', function () {
     it('throws a ParserKeyError', function () {
       expect(() => {
-        const commandParams = parseCommand('<incorrect-key>')
-        eraseParser(commandParams)
+        eraseParser('<incorrect-key>')
       }).toThrowError(ParserKeyError)
     })
   })

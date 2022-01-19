@@ -1,13 +1,20 @@
-import { parseCommand, ParserKeyError, ParserStatus, rosterItemParser } from '../../../../src'
+import {
+  FunctionButtonKind,
+  FunctionName,
+  ParserKeyError,
+  ParserStatus,
+  rosterItemParser,
+  RosterItemResult
+} from '../../../../src'
 
 describe('rosterItemParser()', function () {
   describe('without function descriptions', function () {
     it('parses `<j 70 "My Loco">`', () => {
-      const commandParams = parseCommand('<j 70 "My Loco">')
-      const result = rosterItemParser(commandParams)
+      const result = rosterItemParser('<j 70 "My Loco">')
 
-      const expected = {
+      const expected: RosterItemResult = {
         key: 'j',
+        parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
           display: 'My Loco',
@@ -21,26 +28,26 @@ describe('rosterItemParser()', function () {
 
   describe('with function descriptions', function () {
     it('parses `<j 70 "My Loco" "Flash/Ring/*Blast">`', () => {
-      const commandParams = parseCommand('<j 70 "My Loco" "Flash/Ring/*Blast">')
-      const result = rosterItemParser(commandParams)
+      const result = rosterItemParser('<j 70 "My Loco" "Flash/Ring/*Blast">')
 
-      const expected = {
+      const expected: RosterItemResult = {
         key: 'j',
+        parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
           display: 'My Loco',
           functionButtons: [
             {
               display: 'Flash',
-              kind: 'toggle'
+              kind: FunctionButtonKind.TOGGLE
             },
             {
               display: 'Ring',
-              kind: 'toggle'
+              kind: FunctionButtonKind.TOGGLE
             },
             {
               display: 'Blast',
-              kind: 'press'
+              kind: FunctionButtonKind.PRESS
             }
           ]
         },
@@ -53,8 +60,7 @@ describe('rosterItemParser()', function () {
   describe('with incorrect key', function () {
     it('throws a ParserKeyError', function () {
       expect(() => {
-        const commandParams = parseCommand('<incorrect-key>')
-        rosterItemParser(commandParams)
+        rosterItemParser('<incorrect-key>')
       }).toThrowError(ParserKeyError)
     })
   })

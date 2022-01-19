@@ -1,10 +1,14 @@
 import {
   createParser,
   Direction,
+  FunctionButtonKind,
+  FunctionName,
   genericParser,
+  ParserResult,
   ParserStatus,
   ReturnTrack,
-  rosterItemParser
+  rosterItemParser,
+  RosterItemResult
 } from '../../../src'
 
 describe('createParser()', () => {
@@ -26,23 +30,24 @@ describe('createParser()', () => {
       const parser = createParser(parsers)
       const result = await parser.parse('<j 70 "My Loco" "Flash/Ring/*Blast">')
 
-      const expected = {
+      const expected: RosterItemResult = {
         key: 'j',
+        parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
           display: 'My Loco',
           functionButtons: [
             {
               display: 'Flash',
-              kind: 'toggle'
+              kind: FunctionButtonKind.TOGGLE
             },
             {
               display: 'Ring',
-              kind: 'toggle'
+              kind: FunctionButtonKind.TOGGLE
             },
             {
               display: 'Blast',
-              kind: 'press'
+              kind: FunctionButtonKind.PRESS
             }
           ]
         },
@@ -53,12 +58,18 @@ describe('createParser()', () => {
   })
 })
 
+interface Expectation {
+  command: string
+  expectation: ParserResult<any>
+}
+
 describe('genericParser()', () => {
-  const expectations = [
+  const expectations: Expectation[] = [
     {
       command: '<p1 MAIN>',
       expectation: {
         key: 'p',
+        parser: FunctionName.POWER,
         params: {
           power: 1,
           track: ReturnTrack.MAIN
@@ -70,6 +81,7 @@ describe('genericParser()', () => {
       command: '<T 1 20 1>',
       expectation: {
         key: 'T',
+        parser: FunctionName.THROTTLE,
         params: {
           register: 1,
           speed: 20,
@@ -82,6 +94,7 @@ describe('genericParser()', () => {
       command: '<e nTurnouts nSensors>',
       expectation: {
         key: 'e',
+        parser: FunctionName.EEPROMS_STORE,
         status: ParserStatus.SUCCESS,
         params: {}
       }
@@ -90,6 +103,7 @@ describe('genericParser()', () => {
       command: '<0>',
       expectation: {
         key: '0',
+        parser: FunctionName.EEPROMS_ERASE,
         status: ParserStatus.SUCCESS,
         params: {}
       }
@@ -98,6 +112,7 @@ describe('genericParser()', () => {
       command: '<j 70 "My Loco" "Flash/Ring/*Blast">',
       expectation: {
         key: 'j',
+        parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
           display: 'My Loco',

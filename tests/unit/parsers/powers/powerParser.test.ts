@@ -1,12 +1,12 @@
-import { parseCommand, ParserKeyError, ParserStatus, powerParser, ReturnTrack } from '../../../../src'
+import { FunctionName, ParserKeyError, ParserStatus, powerParser, PowerResult, ReturnTrack } from '../../../../src'
 
 describe('powerParser()', function () {
   it("parses '<p1 MAIN>'", () => {
-    const commandParams = parseCommand('<p1 MAIN>')
-    const result = powerParser(commandParams)
+    const result = powerParser('<p1 MAIN>')
 
-    const expected = {
+    const expected: PowerResult = {
       key: 'p',
+      parser: FunctionName.POWER,
       params: {
         power: 1,
         track: ReturnTrack.MAIN
@@ -17,11 +17,11 @@ describe('powerParser()', function () {
   })
 
   it("parses '<p0 MAIN>'", () => {
-    const commandParams = parseCommand('<p0 MAIN>')
-    const result = powerParser(commandParams)
+    const result = powerParser('<p0 MAIN>')
 
-    const expected = {
+    const expected: PowerResult = {
       key: 'p',
+      parser: FunctionName.POWER,
       params: {
         power: 0,
         track: ReturnTrack.MAIN
@@ -32,11 +32,11 @@ describe('powerParser()', function () {
   })
 
   it("parses '<p1>'", () => {
-    const commandParams = parseCommand('<p1>')
-    const result = powerParser(commandParams)
+    const result = powerParser('<p1>')
 
-    const expected = {
+    const expected: PowerResult = {
       key: 'p',
+      parser: FunctionName.POWER,
       params: {
         power: 1,
         track: ReturnTrack.ALL
@@ -49,8 +49,7 @@ describe('powerParser()', function () {
   describe('with incorrect key', function () {
     it('throws a ParserKeyError', function () {
       expect(() => {
-        const commandParams = parseCommand('<incorrect-key>')
-        powerParser(commandParams)
+        powerParser('<incorrect-key>')
       }).toThrowError(ParserKeyError)
     })
   })

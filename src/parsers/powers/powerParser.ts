@@ -1,6 +1,6 @@
-import { Command } from '../../utils/index.js'
+import { Command, parseCommand } from '../../utils/index.js'
 import { ParserKeyError } from '../errors/index.js'
-import { ParserResult, ParserStatus } from '../../types/index.js'
+import { FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
 
 export enum ReturnTrack {
   ALL = 'ALL',
@@ -15,7 +15,7 @@ export interface PowerParams {
 export type PowerResult = ParserResult<PowerParams>
 export const powerParserKey = 'p'
 
-export const powerParser: (params: Command) => PowerResult = ({ key: potentialKey, attributes }) => {
+export const parseFromCommand: (params: Command) => PowerResult = ({ key: potentialKey, attributes }) => {
   const [key, power] = potentialKey.split('')
 
   if (!isPowerCommand(key, power)) {
@@ -30,6 +30,7 @@ export const powerParser: (params: Command) => PowerResult = ({ key: potentialKe
 
   return {
     key: powerParserKey,
+    parser: FunctionName.POWER,
     status: ParserStatus.SUCCESS,
     params: {
       power: parseInt(power),
@@ -40,4 +41,9 @@ export const powerParser: (params: Command) => PowerResult = ({ key: potentialKe
 
 function isPowerCommand (key: string, power: string): boolean {
   return key === powerParserKey && ['0', '1'].includes(power)
+}
+
+export const powerParser: (command: string) => PowerResult = (command) => {
+  const commandParams = parseCommand(command)
+  return parseFromCommand(commandParams)
 }

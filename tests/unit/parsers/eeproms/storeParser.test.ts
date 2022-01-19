@@ -1,12 +1,12 @@
-import { storeParser, ParserKeyError, ParserStatus, parseCommand } from '../../../../src'
+import { FunctionName, ParserKeyError, ParserResult, ParserStatus, storeParser } from '../../../../src'
 
 describe('storeParser()', function () {
   it("parses '<e nTurnouts nSensors>'", () => {
-    const commandParams = parseCommand('<e nTurnouts nSensors>')
-    const result = storeParser(commandParams)
+    const result = storeParser('<e nTurnouts nSensors>')
 
-    const expected = {
+    const expected: ParserResult<any> = {
       key: 'e',
+      parser: FunctionName.EEPROMS_STORE,
       status: ParserStatus.SUCCESS,
       params: {}
     }
@@ -16,8 +16,7 @@ describe('storeParser()', function () {
   describe('with incorrect key', function () {
     it('throws a ParserKeyError', function () {
       expect(() => {
-        const commandParams = parseCommand('<incorrect-key>')
-        storeParser(commandParams)
+        storeParser('<incorrect-key>')
       }).toThrowError(ParserKeyError)
     })
   })

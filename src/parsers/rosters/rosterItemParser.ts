@@ -1,8 +1,8 @@
-import { Command } from '../../utils/index.js'
-import { ParserResult, ParserStatus } from '../../types/index.js'
+import { Command, parseCommand } from '../../utils/index.js'
+import { FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
 import { ParserKeyError } from '../errors/index.js'
 
-enum FunctionButtonKind {
+export enum FunctionButtonKind {
   TOGGLE = 'toggle',
   PRESS = 'press'
 }
@@ -20,30 +20,10 @@ interface RosterItemParams {
   functionButtons: FunctionButtons
 }
 
-type RosterItemResult = ParserResult<RosterItemParams>
+export type RosterItemResult = ParserResult<RosterItemParams>
 const rosterItemParserKey = 'j'
 
-export const rosterItemParser: (params: Command) => RosterItemResult = ({ key, attributes }) => {
-  const [cabId, display, rawFunctionButtons] = attributes
-
-  if (key !== rosterItemParserKey) {
-    throw new ParserKeyError('rosterItemParser', key)
-  }
-
-  const functionButtons: FunctionButtons = functionButtonsParser(rawFunctionButtons)
-
-  return {
-    key: rosterItemParserKey,
-    status: ParserStatus.SUCCESS,
-    params: {
-      cabId: parseInt(cabId),
-      display,
-      functionButtons
-    }
-  }
-}
-
-function functionButtonsParser (param: string | null = null): FunctionButtons {
+const functionButtonsParser = (param: string | null = null): FunctionButtons => {
   if (param === null) {
     return []
   }
@@ -58,4 +38,30 @@ function functionButtonsParser (param: string | null = null): FunctionButtons {
       kind
     }
   })
+}
+
+const parseFromCommand: (params: Command) => RosterItemResult = ({ key, attributes }) => {
+  const [cabId, display, rawFunctionButtons] = attributes
+
+  if (key !== rosterItemParserKey) {
+    throw new ParserKeyError('rosterItemParser', key)
+  }
+
+  const functionButtons: FunctionButtons = functionButtonsParser(rawFunctionButtons)
+
+  return {
+    key: rosterItemParserKey,
+    parser: FunctionName.ROSTER_ITEM,
+    status: ParserStatus.SUCCESS,
+    params: {
+      cabId: parseInt(cabId),
+      display,
+      functionButtons
+    }
+  }
+}
+
+export const rosterItemParser: (command: string) => RosterItemResult = (command) => {
+  const commandParams = parseCommand(command)
+  return parseFromCommand(commandParams)
 }

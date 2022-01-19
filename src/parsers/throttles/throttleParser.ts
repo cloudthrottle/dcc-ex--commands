@@ -1,6 +1,6 @@
-import { Command } from '../../utils/index.js'
+import { Command, parseCommand } from '../../utils/index.js'
 import { ParserAttributeError, ParserKeyError } from '../errors/index.js'
-import { ParserResult, ParserStatus } from '../../types/index.js'
+import { FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
 import { Direction, Speed } from '../../commands/index.js'
 
 export interface ThrottleParams {
@@ -9,9 +9,11 @@ export interface ThrottleParams {
   direction: Direction
 }
 export type ThrottleResult = ParserResult<ThrottleParams>
-export const throttleParserKey = 'T'
+const throttleParserKey = 'T'
 
-export const throttleParser: (params: Command) => ThrottleResult = ({ key, attributes }) => {
+const isValidDirection = (direction: number): boolean => !Object.values(Direction).includes(direction as Direction)
+
+const parseFromCommand: (params: Command) => ThrottleResult = ({ key, attributes }) => {
   const [register, speed, directionString] = attributes
 
   if (key !== throttleParserKey) {
@@ -26,6 +28,7 @@ export const throttleParser: (params: Command) => ThrottleResult = ({ key, attri
 
   return {
     key: throttleParserKey,
+    parser: FunctionName.THROTTLE,
     status: ParserStatus.SUCCESS,
     params: {
       register: parseInt(register),
@@ -35,6 +38,7 @@ export const throttleParser: (params: Command) => ThrottleResult = ({ key, attri
   }
 }
 
-function isValidDirection (direction: number): boolean {
-  return !Object.values(Direction).includes(direction as Direction)
+export const throttleParser: (command: string) => ThrottleResult = (command) => {
+  const commandParams = parseCommand(command)
+  return parseFromCommand(commandParams)
 }
