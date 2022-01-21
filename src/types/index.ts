@@ -6,11 +6,12 @@ export enum ParserStatus {
 }
 
 export enum FunctionName {
-  THROTTLE = 'throttleParser',
-  ROSTER_ITEM = 'rosterItemParser',
   EEPROMS_ERASE = 'eraseParser',
   EEPROMS_STORE = 'storeParser',
+  LOCO = 'locoParser',
   POWER = 'powerParser',
+  ROSTER_ITEM = 'rosterItemParser',
+  THROTTLE = 'throttleParser',
 }
 
 export interface ParserResult<T> {
