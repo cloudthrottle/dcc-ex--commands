@@ -17,7 +17,7 @@ const parseFromCommand: (params: Command) => ThrottleResult = ({ key, attributes
   const [register, speed, directionString] = attributes
 
   if (key !== throttleParserKey) {
-    throw new ParserKeyError('cabParser', key)
+    throw new ParserKeyError('throttleParser', key)
   }
 
   const direction = parseInt(directionString)
