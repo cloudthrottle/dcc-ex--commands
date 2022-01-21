@@ -45,7 +45,7 @@ export function parseSpeedAndDirection (speedValue: number): { speed: Speed, dir
 export const parseFunctionButtons = (functionButtonValue: number): FunctionButtons => {
   const values = functionButtonValue.toString(2).split('').reverse().map(value => parseInt(value))
 
-  const numOfFunctions = 30
+  const numOfFunctions = 29
   return Array.from(Array(numOfFunctions))
     .reduce((previousValue, currentValue, currentIndex) => {
       previousValue[currentIndex.toString()] = {

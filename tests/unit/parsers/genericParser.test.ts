@@ -1,9 +1,10 @@
 import {
+  BitValue,
   createParser,
   Direction,
   FunctionButtonKind,
   FunctionName,
-  genericParser,
+  genericParser, parseFunctionButtons,
   ParserResult,
   ParserStatus,
   ReturnTrack,
@@ -133,8 +134,42 @@ describe('genericParser()', () => {
         },
         status: ParserStatus.SUCCESS
       }
+    },
+    {
+      command: '<l 10 1 127 43>',
+      expectation: {
+        key: 'l',
+        parser: FunctionName.LOCO,
+        params: {
+          cabId: 10,
+          register: 1,
+          speed: 126,
+          direction: Direction.REVERSE,
+          functionButtons: {
+            ...parseFunctionButtons(0),
+            0: {
+              value: 1 as BitValue
+            },
+            1: {
+              value: 1 as BitValue
+            },
+            2: {
+              value: 0 as BitValue
+            },
+            3: {
+              value: 1 as BitValue
+            },
+            4: {
+              value: 0 as BitValue
+            },
+            5: {
+              value: 1 as BitValue
+            }
+          }
+        },
+        status: ParserStatus.SUCCESS
+      }
     }
-
   ]
 
   expectations.forEach(({ command, expectation }) => {

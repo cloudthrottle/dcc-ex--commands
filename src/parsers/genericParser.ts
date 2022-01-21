@@ -2,7 +2,7 @@ import { ParserResult } from '../types/index.js'
 import { rosterItemParser } from './rosters/index.js'
 import { eraseParser, storeParser } from './eeproms/index.js'
 import { powerParser } from './powers/index.js'
-import { throttleParser } from './throttles/index.js'
+import { locoParser, throttleParser } from './throttles/index.js'
 
 type ParserFunction = (command: string) => ParserResult<any>
 type ParseResult = (command: string) => Promise<ParserResult<any>>
@@ -34,9 +34,10 @@ export const createParser: CreateParser = (parsers) => {
 export const genericParser: GenericParser = () => {
   const allParsers: ParserFunction[] = [
     eraseParser,
-    storeParser,
+    locoParser,
     powerParser,
     rosterItemParser,
+    storeParser,
     throttleParser
   ]
 
