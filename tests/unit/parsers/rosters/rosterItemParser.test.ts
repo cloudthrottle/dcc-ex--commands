@@ -18,7 +18,7 @@ describe('rosterItemParser()', function () {
         params: {
           cabId: 70,
           display: 'My Loco',
-          functionButtons: []
+          functionButtons: {}
         },
         status: ParserStatus.SUCCESS
       }
@@ -36,20 +36,20 @@ describe('rosterItemParser()', function () {
         params: {
           cabId: 70,
           display: 'My Loco',
-          functionButtons: [
-            {
+          functionButtons: {
+            0: {
               display: 'Flash',
               kind: FunctionButtonKind.TOGGLE
             },
-            {
+            1: {
               display: 'Ring',
               kind: FunctionButtonKind.TOGGLE
             },
-            {
+            2: {
               display: 'Blast',
               kind: FunctionButtonKind.PRESS
             }
-          ]
+          }
         },
         status: ParserStatus.SUCCESS
       }

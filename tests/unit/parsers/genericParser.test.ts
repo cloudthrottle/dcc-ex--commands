@@ -37,20 +37,20 @@ describe('createParser()', () => {
         params: {
           cabId: 70,
           display: 'My Loco',
-          functionButtons: [
-            {
+          functionButtons: {
+            0: {
               display: 'Flash',
               kind: FunctionButtonKind.TOGGLE
             },
-            {
+            1: {
               display: 'Ring',
               kind: FunctionButtonKind.TOGGLE
             },
-            {
+            2: {
               display: 'Blast',
               kind: FunctionButtonKind.PRESS
             }
-          ]
+          }
         },
         status: ParserStatus.SUCCESS
       }
@@ -117,20 +117,20 @@ describe('genericParser()', () => {
         params: {
           cabId: 70,
           display: 'My Loco',
-          functionButtons: [
-            {
+          functionButtons: {
+            0: {
               display: 'Flash',
               kind: 'toggle'
             },
-            {
+            1: {
               display: 'Ring',
               kind: 'toggle'
             },
-            {
+            2: {
               display: 'Blast',
               kind: 'press'
             }
-          ]
+          }
         },
         status: ParserStatus.SUCCESS
       }
