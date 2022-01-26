@@ -1,18 +1,15 @@
 import { Command, parseCommand } from '../../utils/index.js'
 import { ParserKeyError } from '../errors/index.js'
-import { BitValue, FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
+import { BitValue, FunctionButton, FunctionButtons, FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
 import { Direction, Speed } from '../../commands/index.js'
 import { ThrottleParams } from './throttleParser.js'
 
-interface FunctionButtons {
-  [name: number]: {
-    value: BitValue
-  }
-}
+type LocoFunctionButtons = FunctionButtons<LocoFunctionButton>
+type LocoFunctionButton = Pick<FunctionButton, 'value'>
 
 export interface LocoParams extends ThrottleParams {
   cabId: number
-  functionButtons: FunctionButtons
+  functionButtons: LocoFunctionButtons
 }
 
 export type LocoResult = ParserResult<LocoParams>
@@ -42,17 +39,17 @@ export function parseSpeedAndDirection (speedValue: number): { speed: Speed, dir
   }
 }
 
-export const parseFunctionButtons = (functionButtonValue: number): FunctionButtons => {
+export const parseFunctionButtons = (functionButtonValue: number): LocoFunctionButtons => {
   const values = functionButtonValue.toString(2).split('').reverse().map(value => parseInt(value))
 
   const numOfFunctions = 29
   return Array.from(Array(numOfFunctions))
-    .reduce((previousValue, currentValue, currentIndex) => {
-      previousValue[currentIndex.toString()] = {
-        value: values[currentIndex] ?? 0
-      }
-      return previousValue
-    }, {})
+    .reduce<LocoFunctionButtons>((acc, currentValue, index) => {
+    acc[index] = {
+      value: values[index] as BitValue ?? 0
+    }
+    return acc
+  }, {})
 }
 
 const locoParserKey = 'l'

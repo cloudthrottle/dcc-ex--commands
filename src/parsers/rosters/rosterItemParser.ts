@@ -1,43 +1,41 @@
 import { Command, parseCommand } from '../../utils/index.js'
-import { FunctionName, ParserResult, ParserStatus } from '../../types/index.js'
+import {
+  FunctionButton,
+  FunctionButtonKind,
+  FunctionButtons,
+  FunctionName,
+  ParserResult,
+  ParserStatus
+} from '../../types/index.js'
 import { ParserKeyError } from '../errors/index.js'
 
-export enum FunctionButtonKind {
-  TOGGLE = 'toggle',
-  PRESS = 'press'
-}
-
-interface FunctionButton {
-  display: string
-  kind: FunctionButtonKind
-}
-
-type FunctionButtons = FunctionButton[]
-
+type RosterFunctionButton = Pick<FunctionButton, 'display' | 'kind'>
+type RosterFunctionButtons = FunctionButtons<RosterFunctionButton>
 interface RosterItemParams {
   cabId: number
   display: string
-  functionButtons: FunctionButtons
+  functionButtons: RosterFunctionButtons
 }
 
 export type RosterItemResult = ParserResult<RosterItemParams>
 const rosterItemParserKey = 'j'
 
-const functionButtonsParser = (param: string | null = null): FunctionButtons => {
+const functionButtonsParser = (param: string | null = null): RosterFunctionButtons => {
   if (param === null) {
-    return []
+    return {}
   }
 
   const buttons = param.split('/')
-  return buttons.map((button) => {
+
+  return buttons.reduce<RosterFunctionButtons>((accum, button, index) => {
     const [display, isPress] = button.split(/(\*)/).reverse()
     const kind = (isPress == null && !isPress) ? FunctionButtonKind.TOGGLE : FunctionButtonKind.PRESS
-
-    return {
+    accum[index] = {
       display,
       kind
     }
-  })
+    return accum
+  }, {})
 }
 
 const parseFromCommand: (params: Command) => RosterItemResult = ({ key, attributes }) => {
@@ -47,7 +45,7 @@ const parseFromCommand: (params: Command) => RosterItemResult = ({ key, attribut
     throw new ParserKeyError('rosterItemParser', key)
   }
 
-  const functionButtons: FunctionButtons = functionButtonsParser(rawFunctionButtons)
+  const functionButtons = functionButtonsParser(rawFunctionButtons)
 
   return {
     key: rosterItemParserKey,
