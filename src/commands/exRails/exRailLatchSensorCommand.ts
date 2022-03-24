@@ -1,7 +1,7 @@
 import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface ExRailLatchSensorCommandParams {
-  sensorId: string
+  sensorId: number
 }
 
 /**

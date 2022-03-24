@@ -2,7 +2,7 @@ import { exRailPauseCommand, exRailResumeCommand, exRailRoutesCommand, exRailTas
 
 describe('exRailPauseCommand()', function () {
   it('is valid', () => {
-    const sendString = '<PAUSE>'
+    const sendString = '</ PAUSE>'
 
     const command = exRailPauseCommand()
     expect(command).toBe(sendString)
@@ -11,7 +11,7 @@ describe('exRailPauseCommand()', function () {
 
 describe('exRailResumeCommand()', function () {
   it('is valid', () => {
-    const sendString = '<RESUME>'
+    const sendString = '</ RESUME>'
 
     const command = exRailResumeCommand()
     expect(command).toBe(sendString)

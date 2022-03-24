@@ -2,7 +2,7 @@ import { exRailFreeBlockCommand, ExRailFreeBlockCommandParams } from '../../../.
 
 describe('exRailFreeBlockCommand()', function () {
   it('is valid', () => {
-    const params: ExRailFreeBlockCommandParams = { blockId: '100' }
+    const params: ExRailFreeBlockCommandParams = { blockId: 100 }
     const sendString = '</ FREE 100>'
 
     const command = exRailFreeBlockCommand(params)

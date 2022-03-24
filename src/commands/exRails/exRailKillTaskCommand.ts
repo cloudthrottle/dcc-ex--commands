@@ -1,6 +1,6 @@
 import { makeCommandFromAttributes } from '../../utils/index.js'
 
-export interface ExRailKillTaskCommandParams { taskId: string }
+export interface ExRailKillTaskCommandParams { taskId: number }
 
 /**
  * Kills a currently running script task by ID (use </> to list task IDs)

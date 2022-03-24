@@ -2,7 +2,7 @@ import { exRailUnlatchSensorCommand, ExRailUnlatchSensorCommandParams } from '..
 
 describe('exRailUnlatchSensorCommand()', function () {
   it('is valid', () => {
-    const params: ExRailUnlatchSensorCommandParams = { sensorId: '100' }
+    const params: ExRailUnlatchSensorCommandParams = { sensorId: 100 }
     const sendString = '</ UNLATCH 100>'
 
     const command = exRailUnlatchSensorCommand(params)

@@ -1,7 +1,7 @@
 import { makeCommandFromAttributes } from '../../utils/index.js'
 
 export interface ExRailUnlatchSensorCommandParams {
-  sensorId: string
+  sensorId: number
 }
 
 /**
