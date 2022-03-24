@@ -3,6 +3,11 @@ export * from './FunctionButtons.js'
 export type BitValue = 0 | 1
 export type Active = BitValue
 
+export enum Enabled {
+  OFF = 'OFF',
+  ON = 'ON'
+}
+
 export enum ParserStatus {
   SUCCESS = 'success'
 }
