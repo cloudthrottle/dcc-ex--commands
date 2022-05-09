@@ -18,7 +18,7 @@ export interface Command {
  * Split string by space and/or by quoted string
  */
 function splitBySpaceOrQuote (cleanedParams: string): string[] {
-  const parts = cleanedParams.match(/\w+|"[^"]+"/g)
+  const parts = cleanedParams.match(/[\w|-]+|"[^"]+"/g)
   return parts ?? []
 }
 

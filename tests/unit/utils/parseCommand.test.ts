@@ -42,6 +42,13 @@ describe('parseCommand()', () => {
     })
   })
 
+  it('returns a key and attributes with negative number', () => {
+    expect(parseCommand('<r -1>')).toEqual({
+      key: 'r',
+      attributes: ['-1']
+    })
+  })
+
   describe('with string values', () => {
     it('returns a key and string attributes', () => {
       expect(parseCommand('<j 70 "My Loco" "Other Parts">'))

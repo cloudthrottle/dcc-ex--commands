@@ -9,7 +9,8 @@ export enum Enabled {
 }
 
 export enum ParserStatus {
-  SUCCESS = 'success'
+  SUCCESS = 'success',
+  FAILURE = 'failure'
 }
 
 export enum FunctionName {
@@ -19,6 +20,7 @@ export enum FunctionName {
   POWER = 'powerParser',
   ROSTER_ITEM = 'rosterItemParser',
   THROTTLE = 'throttleParser',
+  DECODER_ADDRESS = 'decoderAddress'
 }
 
 export interface ParserResult<T> {

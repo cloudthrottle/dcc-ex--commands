@@ -110,6 +110,17 @@ describe('genericParser()', () => {
       }
     },
     {
+      command: '<r 100>',
+      expectation: {
+        key: 'r',
+        parser: FunctionName.DECODER_ADDRESS,
+        status: ParserStatus.SUCCESS,
+        params: {
+          address: 100
+        }
+      }
+    },
+    {
       command: '<j 70 "My Loco" "Flash/Ring/*Blast">',
       expectation: {
         key: 'j',

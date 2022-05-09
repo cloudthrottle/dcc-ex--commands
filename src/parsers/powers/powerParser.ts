@@ -15,7 +15,7 @@ export interface PowerParams {
 export type PowerResult = ParserResult<PowerParams>
 export const powerParserKey = 'p'
 
-export const parseFromCommand: (params: Command) => PowerResult = ({ key: potentialKey, attributes }) => {
+const parseFromCommand: (params: Command) => PowerResult = ({ key: potentialKey, attributes }) => {
   const [key, power] = potentialKey.split('')
 
   if (!isPowerCommand(key, power)) {
