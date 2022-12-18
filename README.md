@@ -41,7 +41,7 @@ console.log(commandString)
 
 ## Demo
 
-[Try out some commands](https://commands.webthrottle.cloud/)
+[Try out some commands](https://commands.cloudthrottle.app/)
 
 
 ## Documentation
