@@ -48,8 +48,8 @@
   },
   "homepage": "https://github.com/cloudthrottle/dcc-ex--commands#readme",
   "engines": {
-    "node": ">=16.8.0",
-    "npm": ">=8.1.0"
+    "node": ">=20.4.0",
+    "npm": ">=9.7.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
