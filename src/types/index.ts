@@ -20,7 +20,9 @@ export enum FunctionName {
   POWER = 'powerParser',
   ROSTER_ITEM = 'rosterItemParser',
   THROTTLE = 'throttleParser',
-  DECODER_ADDRESS = 'decoderAddress'
+  DECODER_ADDRESS = 'decoderAddress',
+  TURNOUT = 'turnoutParser',
+  TURNOUT_DCC = 'turnoutDCCParser'
 }
 
 export interface ParserResult<T> {

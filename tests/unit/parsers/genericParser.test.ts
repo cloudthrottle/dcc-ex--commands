@@ -4,12 +4,14 @@ import {
   Direction,
   FunctionButtonKind,
   FunctionName,
-  genericParser, parseFunctionButtons,
+  genericParser,
+  parseFunctionButtons,
   ParserResult,
   ParserStatus,
   ReturnTrack,
   rosterItemParser,
-  RosterItemResult
+  RosterItemResult,
+  TurnoutState
 } from '../../../src'
 
 describe('createParser()', () => {
@@ -179,6 +181,35 @@ describe('genericParser()', () => {
           }
         },
         status: ParserStatus.SUCCESS
+      }
+    },
+    {
+      command: '<H 1 DCC 2 23 0>',
+      expectation: {
+        key: 'H',
+        parser: FunctionName.TURNOUT_DCC,
+        status: ParserStatus.SUCCESS,
+        params: {
+          id: 1,
+          kind: 'DCC',
+          address: {
+            primaryAddress: 2,
+            subAddress: 23
+          },
+          thrown: TurnoutState.CLOSED
+        }
+      }
+    },
+    {
+      command: '<H 1 0>',
+      expectation: {
+        key: 'H',
+        parser: FunctionName.TURNOUT,
+        status: ParserStatus.SUCCESS,
+        params: {
+          id: 1,
+          thrown: TurnoutState.CLOSED
+        }
       }
     }
   ]
