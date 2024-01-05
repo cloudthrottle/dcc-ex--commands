@@ -253,6 +253,67 @@ describe('genericParser()', () => {
       }
     },
     {
+      command: '<jT>',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_LIST,
+        params: {
+          turnoutIds: []
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+
+    {
+      command: '<jT 200 10>',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_LIST,
+        params: {
+          turnoutIds: [200, 10]
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
+      command: '<jT 1 22 333 4444>',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_LIST,
+        params: {
+          turnoutIds: [1, 22, 333, 4444]
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
+      command: '<jT 70 1 "Turnout 70 Thrown">',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_ITEM,
+        status: ParserStatus.SUCCESS,
+        params: {
+          turnoutId: 70,
+          thrown: TurnoutState.THROWN,
+          description: 'Turnout 70 Thrown'
+        }
+      }
+    },
+
+    {
+      command: '<jT 70 1 "10">',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_ITEM,
+        status: ParserStatus.SUCCESS,
+        params: {
+          turnoutId: 70,
+          thrown: TurnoutState.THROWN,
+          description: '10'
+        }
+      }
+    },
+    {
       command: '<H 1 0>',
       expectation: {
         key: 'H',

@@ -23,6 +23,8 @@ export enum FunctionName {
   THROTTLE = 'throttleParser',
   DECODER_ADDRESS = 'decoderAddress',
   TURNOUT = 'turnoutParser',
+  TURNOUT_LIST = 'turnoutListParser',
+  TURNOUT_ITEM = 'turnoutItemParser',
   TURNOUT_DCC = 'turnoutDCCParser'
 }
 
