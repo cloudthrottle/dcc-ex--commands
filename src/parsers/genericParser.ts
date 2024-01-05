@@ -4,7 +4,7 @@ import { eraseParser, storeParser } from './eeproms/index.js'
 import { powerParser } from './powers/index.js'
 import { locoParser, throttleParser } from './throttles/index.js'
 import { decoderAddressParser } from './decoders/index.js'
-import { turnoutDCCParser, turnoutListParser, turnoutParser } from './turnouts/index.js'
+import { turnoutDCCParser, turnoutItemParser, turnoutListParser, turnoutParser } from './turnouts/index.js'
 
 type ParserFunction = (command: string) => ParserResult<any>
 type ParseResult = (command: string) => Promise<ParserResult<any>>
@@ -45,6 +45,7 @@ export const genericParser: GenericParser = () => {
     decoderAddressParser,
     turnoutParser,
     turnoutListParser,
+    turnoutItemParser,
     turnoutDCCParser
   ]
 
