@@ -19,6 +19,7 @@ export enum FunctionName {
   LOCO = 'locoParser',
   POWER = 'powerParser',
   ROSTER_ITEM = 'rosterItemParser',
+  ROSTER_LIST = 'rosterListParser',
   THROTTLE = 'throttleParser',
   DECODER_ADDRESS = 'decoderAddress',
   TURNOUT = 'turnoutParser',

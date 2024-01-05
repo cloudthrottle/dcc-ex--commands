@@ -149,6 +149,58 @@ describe('genericParser()', () => {
       }
     },
     {
+      command: '<jR 1 22 333 4444>',
+      expectation: {
+        key: 'jR',
+        parser: FunctionName.ROSTER_LIST,
+        params: {
+          cabIds: [
+            1,
+            22,
+            333,
+            4444
+          ]
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
+      command: '<jR>',
+      expectation: {
+        key: 'jR',
+        parser: FunctionName.ROSTER_LIST,
+        params: {
+          cabIds: []
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+
+    {
+      command: '<jR 200 10>',
+      expectation: {
+        key: 'jR',
+        parser: FunctionName.ROSTER_LIST,
+        params: {
+          cabIds: [200, 10]
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
+      command: '<jR 200 "10">',
+      expectation: {
+        key: 'jR',
+        parser: FunctionName.ROSTER_ITEM,
+        params: {
+          cabId: 200,
+          display: '10',
+          functionButtons: {}
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
       command: '<l 10 1 127 43>',
       expectation: {
         key: 'l',

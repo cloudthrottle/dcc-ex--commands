@@ -1,5 +1,5 @@
 import { ParserResult } from '../types/index.js'
-import { rosterItemParser } from './rosters/index.js'
+import { rosterItemParser, rosterListParser } from './rosters/index.js'
 import { eraseParser, storeParser } from './eeproms/index.js'
 import { powerParser } from './powers/index.js'
 import { locoParser, throttleParser } from './throttles/index.js'
@@ -39,6 +39,7 @@ export const genericParser: GenericParser = () => {
     locoParser,
     powerParser,
     rosterItemParser,
+    rosterListParser,
     storeParser,
     throttleParser,
     decoderAddressParser,

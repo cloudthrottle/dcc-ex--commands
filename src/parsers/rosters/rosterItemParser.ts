@@ -1,4 +1,4 @@
-import { Command, parseCommand } from '../../utils/index.js'
+import { Command, parseCommand, removeDoubleQuotes } from '../../utils/index.js'
 import {
   FunctionButton,
   FunctionButtonKind,
@@ -7,7 +7,7 @@ import {
   ParserResult,
   ParserStatus
 } from '../../types/index.js'
-import { ParserKeyError } from '../errors/index.js'
+import { ParserAttributeError, ParserKeyError } from '../errors/index.js'
 
 type RosterFunctionButton = Pick<FunctionButton, 'display' | 'kind'>
 type RosterFunctionButtons = FunctionButtons<RosterFunctionButton>
@@ -31,7 +31,7 @@ const functionButtonsParser = (param: string | null = null): RosterFunctionButto
     const [display, isPress] = button.split(/(\*)/).reverse()
     const kind = (isPress == null && !isPress) ? FunctionButtonKind.TOGGLE : FunctionButtonKind.PRESS
     accum[index] = {
-      display,
+      display: removeDoubleQuotes(display),
       kind
     }
     return accum
@@ -41,8 +41,12 @@ const functionButtonsParser = (param: string | null = null): RosterFunctionButto
 const parseFromCommand: (params: Command) => RosterItemResult = ({ key, attributes }) => {
   const [cabId, display, rawFunctionButtons] = attributes
 
-  if (key !== rosterItemParserKey) {
+  if (key !== rosterItemParserKey || attributes.length > 3) {
     throw new ParserKeyError('rosterItemParser', key)
+  }
+
+  if (!display.includes('"')) {
+    throw new ParserAttributeError('display', display, 'display must be wrapped in double quotes')
   }
 
   const functionButtons = functionButtonsParser(rawFunctionButtons)
@@ -53,7 +57,7 @@ const parseFromCommand: (params: Command) => RosterItemResult = ({ key, attribut
     status: ParserStatus.SUCCESS,
     params: {
       cabId: parseInt(cabId),
-      display,
+      display: removeDoubleQuotes(display),
       functionButtons
     }
   }

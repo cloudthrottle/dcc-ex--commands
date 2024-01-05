@@ -51,10 +51,10 @@ describe('parseCommand()', () => {
 
   describe('with string values', () => {
     it('returns a key and string attributes', () => {
-      expect(parseCommand('<j 70 "My Loco" "Other Parts">'))
+      expect(parseCommand('<jR 70 "My Loco" "Other Parts">'))
         .toEqual({
-          key: 'j',
-          attributes: ['70', 'My Loco', 'Other Parts']
+          key: 'jR',
+          attributes: ['70', '"My Loco"', '"Other Parts"']
         })
     })
   })
