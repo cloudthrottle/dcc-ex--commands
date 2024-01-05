@@ -23,9 +23,7 @@ function splitBySpaceOrQuote (cleanedParams: string): string[] {
 }
 
 function getStrings (cleanedParams: string): string[] {
-  return splitBySpaceOrQuote(cleanedParams).map((part) => {
-    return part.replaceAll('"', '')
-  })
+  return splitBySpaceOrQuote(cleanedParams)
 }
 
 export function parseCommand (command: string): Command {

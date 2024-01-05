@@ -4,7 +4,7 @@ interface RosterCommandParams {
   cabId?: number
 }
 
-const rosterSendKey = 'J'
+const rosterSendKey = 'JR'
 
 export const rosterCommand: (params?: RosterCommandParams) => string = ({ cabId } = {}) => {
   return makeCommandFromAttributes([rosterSendKey, cabId])
