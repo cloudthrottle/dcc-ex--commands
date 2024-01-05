@@ -18,7 +18,7 @@ describe('createParser()', () => {
   describe('when no parsers can parse the command', () => {
     it('should raise AggregateError', async () => {
       const parser = createParser([])
-      const result = parser.parse('<j 70 "My Loco" "Flash/Ring/*Blast">')
+      const result = parser.parse('<jR 70 "My Loco" "Flash/Ring/*Blast">')
       return await result.catch((e: any) =>
         expect(e).toBeInstanceOf(AggregateError)
       )
@@ -31,10 +31,10 @@ describe('createParser()', () => {
         rosterItemParser
       ]
       const parser = createParser(parsers)
-      const result = await parser.parse('<j 70 "My Loco" "Flash/Ring/*Blast">')
+      const result = await parser.parse('<jR 70 "My Loco" "Flash/Ring/*Blast">')
 
       const expected: RosterItemResult = {
-        key: 'j',
+        key: 'jR',
         parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
@@ -123,9 +123,9 @@ describe('genericParser()', () => {
       }
     },
     {
-      command: '<j 70 "My Loco" "Flash/Ring/*Blast">',
+      command: '<jR 70 "My Loco" "Flash/Ring/*Blast">',
       expectation: {
-        key: 'j',
+        key: 'jR',
         parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,

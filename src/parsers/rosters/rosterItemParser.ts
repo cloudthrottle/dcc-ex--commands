@@ -18,7 +18,7 @@ interface RosterItemParams {
 }
 
 export type RosterItemResult = ParserResult<RosterItemParams>
-const rosterItemParserKey = 'j'
+const rosterItemParserKey = 'jR'
 
 const functionButtonsParser = (param: string | null = null): RosterFunctionButtons => {
   if (param === null) {

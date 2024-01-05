@@ -9,11 +9,11 @@ import {
 
 describe('rosterItemParser()', function () {
   describe('without function descriptions', function () {
-    it('parses `<j 70 "My Loco">`', () => {
-      const result = rosterItemParser('<j 70 "My Loco">')
+    it('parses `<jR 70 "My Loco">`', () => {
+      const result = rosterItemParser('<jR 70 "My Loco">')
 
       const expected: RosterItemResult = {
-        key: 'j',
+        key: 'jR',
         parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
@@ -27,11 +27,11 @@ describe('rosterItemParser()', function () {
   })
 
   describe('with function descriptions', function () {
-    it('parses `<j 70 "My Loco" "Flash/Ring/*Blast">`', () => {
-      const result = rosterItemParser('<j 70 "My Loco" "Flash/Ring/*Blast">')
+    it('parses `<jR 70 "My Loco" "Flash/Ring/*Blast">`', () => {
+      const result = rosterItemParser('<jR 70 "My Loco" "Flash/Ring/*Blast">')
 
       const expected: RosterItemResult = {
-        key: 'j',
+        key: 'jR',
         parser: FunctionName.ROSTER_ITEM,
         params: {
           cabId: 70,
