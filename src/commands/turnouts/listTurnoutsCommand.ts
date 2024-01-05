@@ -1,6 +1,6 @@
 import { makeCommand } from '../../utils/index.js'
 
-const listTurnoutsCommandKey = 'T'
+const listTurnoutsCommandKey = 'JT'
 
 /**
  *
