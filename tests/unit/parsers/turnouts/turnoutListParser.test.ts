@@ -17,7 +17,7 @@ describe('turnoutListParser()', function () {
     })
   })
 
-  describe('with Roster Items', function () {
+  describe('with Turnout Items', function () {
     it('parses `<jT 1 22 333 4444>`', () => {
       const result = turnoutListParser('<jT 1 22 333 4444>')
 
