@@ -253,6 +253,29 @@ describe('genericParser()', () => {
       }
     },
     {
+      command: '<jT>',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_LIST,
+        params: {
+          turnoutIds: []
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+
+    {
+      command: '<jT 200 10>',
+      expectation: {
+        key: 'jT',
+        parser: FunctionName.TURNOUT_LIST,
+        params: {
+          turnoutIds: [200, 10]
+        },
+        status: ParserStatus.SUCCESS
+      }
+    },
+    {
       command: '<H 1 0>',
       expectation: {
         key: 'H',
